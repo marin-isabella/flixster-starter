@@ -3,12 +3,13 @@ import './MovieCard.css';
 
 const MovieCard = (props) => {
     const { image, title, rating } = props;
-    const imageUrl = "https://picsum.photos/200/300";
+    // Reference for base url: https://developer.themoviedb.org/docs/image-basics
+    const imageUrl = `https://image.tmdb.org/t/p/w500${image}`;
 
     return (
         <div className="movie-card">
             <div className="movie-image">
-                <img src={imageUrl}/>
+                <img src={imageUrl} alt={title} />
             </div>
             <div className="movie-info">
                 <h2 className="movie-title">{title}</h2>
