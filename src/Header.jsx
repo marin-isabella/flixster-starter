@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <h1>🎥Flixster🎬</h1>
+        <h1 style={{backgroundColor : "lightBlue", padding : "50px"}}>🎥Flixster🎬</h1>
     )
 }
 

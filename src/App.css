@@ -27,6 +27,11 @@
   }
 }
 
-.movie-card-section {
+.movie-list {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
+  width: 100%;
 }
