@@ -2,11 +2,18 @@ import React from 'react';
 import './MovieCard.css';
 
 const MovieCard = (props) => {
+    const { image, title, rating } = props;
+    const imageUrl = "https://picsum.photos/200/300";
+
     return (
         <div className="movie-card">
-            <img src="https://picsum.photos/200/300"/>
-            <h1>{props.title}</h1>
-            <h2>Rating: {props.rating}</h2>
+            <div className="movie-image">
+                <img src={imageUrl}/>
+            </div>
+            <div className="movie-info">
+                <h2 className="movie-title">{title}</h2>
+                <h3 className="movie-rating">Rating: {rating}</h3>
+            </div>
         </div>
     )
 }

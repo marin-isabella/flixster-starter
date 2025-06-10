@@ -30,8 +30,7 @@
 .movie-list {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
-  gap: 30px;
   justify-content: center;
-  width: 100%;
+  gap: 20px;
+  margin: auto;
 }
