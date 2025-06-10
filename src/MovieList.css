@@ -6,3 +6,9 @@
     padding: 20px;
     margin: 0 auto;
 }
+
+.load-button {
+    width: 100%;
+    align-items: center;
+    padding: 5px 0;
+}

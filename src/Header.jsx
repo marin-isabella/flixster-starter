@@ -1,5 +1,7 @@
 import React from 'react';
 import SearchForm from './SearchForm';
+import { useState } from 'react';
+//import LoadButton from './LoadButton';
 import './Header.css';
 
 const Header = () => {
