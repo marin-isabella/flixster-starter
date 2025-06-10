@@ -2,9 +2,9 @@ import React from "react";
 
 const SearchForm = () => {
     return (
-        <form>
+        <form className="search-form">
             <input type="text"/>
-            <button>Search</button>
+            <button className="search-button">Search</button>
         </form>
     );
 }
