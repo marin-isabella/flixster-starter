@@ -3,7 +3,7 @@ import MovieCard from './MovieCard.jsx';
 import './MovieList.css';
 import LoadButton from './LoadButton.jsx';
 
-const MovieList = ({ movies, loadMore, isSorted }) => {
+const MovieList = ({ movies, loadMore, isSorted, onMovieSelect }) => {
     return (
         <div className="movie-list">
             {/** Checks for when no movies to show if you keep pressing load more: */}
@@ -11,7 +11,7 @@ const MovieList = ({ movies, loadMore, isSorted }) => {
                 <div className="no-movies">No movies to show</div>
             ) : (
                 movies.map(movie => (
-                    <MovieCard key={movie.id} image={movie.poster_path} title={movie.original_title} rating={movie.vote_average}/>
+                    <MovieCard key={movie.id} movie={movie} image={movie.poster_path} title={movie.original_title} rating={movie.vote_average} onClick={() => onMovieSelect(movie)}/>
                 ))
             )}
             <LoadButton inc={loadMore} disabled={isSorted} />

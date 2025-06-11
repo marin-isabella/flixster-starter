@@ -2,12 +2,12 @@ import React from 'react';
 import './MovieCard.css';
 
 const MovieCard = (props) => {
-    const { image, title, rating } = props;
+    const { image, title, rating, onClick } = props;
     // Reference for base url: https://developer.themoviedb.org/docs/image-basics
     const imageUrl = `https://image.tmdb.org/t/p/w500${image}`;
 
     return (
-        <div className="movie-card">
+        <div className="movie-card" onClick={onClick}>
             <div className="movie-image">
                 <img src={imageUrl} alt={`Movie poster for ${title}`}/>
 

@@ -4,10 +4,10 @@ import './Footer.css';
 const Footer = () => {
     return (
         <>
-            <div className="footer">
+            <footer className="footer">
                 <p>Copyright 2025</p>
                 <p>Created by Isabella Marin</p>
-            </div>
+            </footer>
         </>
     )
 }
