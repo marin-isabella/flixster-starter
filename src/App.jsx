@@ -12,6 +12,7 @@ function App() {
   const [query, setQuery] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const [sortOption, setSortOption] = useState('');
+  const [isSorted, setIsSorted] = useState(false);
 
   const loadMore = () => {
     setPageNumber(prevPage => prevPage + 1);
@@ -57,11 +58,23 @@ function App() {
   const handleClear = () => {
     setQuery('');
     setPageNumber(1);
+    setIsSorted(false);
     fetchMovies('', 1);
   }
 
   const handleSort = (sortOption) => {
     setSortOption(sortOption);
+
+    // resets sorting state and fetches movies again when now playing selected on drop down (to unsort movies)
+    if (sortOption === 'now-playing') {
+      setIsSorted(false);
+      fetchMovies('', 1);
+      return;
+    }
+
+    // For all other sort options, set sorting to true
+    setIsSorted(true);
+
     // Reference to compare 2 strings alphabetically: https://stackoverflow.com/questions/10198257/comparing-2-strings-alphabetically-for-sorting-purposes
     // Reference to compare 2 dates: https://stackoverflow.com/questions/10123953/how-to-sort-an-object-array-by-date-property
     setMovieData(prev => {
@@ -72,9 +85,6 @@ function App() {
           return new Date(b.release_date) - new Date(a.release_date);
         } else if (sortOption === 'vote-average') {
           return b.vote_average - a.vote_average;
-        } else if (sortOption === 'now-playing'){
-          // fetches movies from API again to display all now playing movies (unsorted by default)
-          return fetchMovies('', 1);
         }
         return 0;
       });
@@ -98,7 +108,7 @@ function App() {
     <>
       <Header onSearch={handleSearch} onClear={handleClear} onSort={handleSort}/>
       <main className="main">
-        <MovieList movies={movieData.results} loadMore={loadMore}/>
+        <MovieList movies={movieData.results} loadMore={loadMore} isSorted={isSorted}/>
       </main>
       <Footer />
     </>
