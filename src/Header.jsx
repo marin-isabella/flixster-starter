@@ -1,8 +1,9 @@
 import React from 'react';
 import SearchForm from './SearchForm';
 import './Header.css';
+import Sort from './Sort';
 
-const Header = ({ onSearch, onClear }) => {
+const Header = ({ onSearch, onClear, onSort }) => {
     return (
         <>
             <header className="header">
@@ -10,6 +11,9 @@ const Header = ({ onSearch, onClear }) => {
                     <h1 className="header-title">🎥Flixster🎬</h1>
                     <div className="header-search">
                         <SearchForm onSearch={onSearch} onClear={onClear}/>
+                    </div>
+                    <div className="header-sort">
+                        <Sort onSort={onSort}/>
                     </div>
                 </div>
             </header>

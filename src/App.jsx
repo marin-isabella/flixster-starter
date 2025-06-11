@@ -8,9 +8,10 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const AUTH_KEY = import.meta.env.VITE_AUTH_KEY;
 
 function App() {
-  const[movieData, setMovieData] = useState({ results: []});
+  const [movieData, setMovieData] = useState({ results: []});
   const [query, setQuery] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
+  const [sortOption, setSortOption] = useState('');
 
   const loadMore = () => {
     setPageNumber(prevPage => prevPage + 1);
@@ -22,7 +23,8 @@ function App() {
       endpoint_url = `${BASE_URL}/search/movie?query=${searchQuery}&page=${page}&language=en-US&include_adult=false`;
     } else {
       endpoint_url = `${BASE_URL}/movie/now_playing?language=en-US&page=${page}`;
-  }
+    }
+
 
   const config = {
     method: 'GET',
@@ -58,6 +60,32 @@ function App() {
     fetchMovies('', 1);
   }
 
+  const handleSort = (sortOption) => {
+    setSortOption(sortOption);
+    // Reference to compare 2 strings alphabetically: https://stackoverflow.com/questions/10198257/comparing-2-strings-alphabetically-for-sorting-purposes
+    // Reference to compare 2 dates: https://stackoverflow.com/questions/10123953/how-to-sort-an-object-array-by-date-property
+    setMovieData(prev => {
+      const sortedResults = [...prev.results].sort((a, b) => {
+        if (sortOption === 'title') {
+          return a.title.localeCompare(b.title);
+        } else if (sortOption === 'release-date') {
+          return new Date(b.release_date) - new Date(a.release_date);
+        } else if (sortOption === 'vote-average') {
+          return b.vote_average - a.vote_average;
+        } else if (sortOption === 'now-playing'){
+          // fetches movies from API again to display all now playing movies (unsorted by default)
+          return fetchMovies('', 1);
+        }
+        return 0;
+      });
+
+      return {
+        ...prev,
+        results: sortedResults
+      };
+    });
+  }
+
   useEffect(() => {
     fetchMovies(query, pageNumber);
   }, [pageNumber, query]);
@@ -68,7 +96,7 @@ function App() {
 
   return (
     <>
-      <Header onSearch={handleSearch} onClear={handleClear}/>
+      <Header onSearch={handleSearch} onClear={handleClear} onSort={handleSort}/>
       <main className="main">
         <MovieList movies={movieData.results} loadMore={loadMore}/>
       </main>
