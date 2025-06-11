@@ -1,17 +1,15 @@
 import React from 'react';
 import SearchForm from './SearchForm';
-import { useState } from 'react';
-//import LoadButton from './LoadButton';
 import './Header.css';
 
-const Header = () => {
+const Header = ({ onSearch }) => {
     return (
         <>
             <header className="header">
                 <div className="header-info">
                     <h1 className="header-title">🎥Flixster🎬</h1>
                     <div className="header-search">
-                        <SearchForm />
+                        <SearchForm onSearch={onSearch}/>
                     </div>
                 </div>
             </header>
