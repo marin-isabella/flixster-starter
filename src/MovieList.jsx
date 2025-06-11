@@ -10,13 +10,11 @@ const MovieList = ({ movies, loadMore }) => {
             {movies.length === 0 ? (
                 <div className="no-movies">No movies to show</div>
             ) : (
-                <>
-                    {movies.map(movie => (
-                        <MovieCard key={movie.id} image={movie.poster_path} title={movie.original_title} rating={movie.vote_average}/>
-                    ))}
-                    <LoadButton inc={loadMore} />
-                </>
+                movies.map(movie => (
+                    <MovieCard key={movie.id} image={movie.poster_path} title={movie.original_title} rating={movie.vote_average}/>
+                ))
             )}
+            <LoadButton inc={loadMore} />
         </div>
     );
 }

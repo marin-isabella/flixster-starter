@@ -11,4 +11,6 @@
     width: 100%;
     align-items: center;
     padding: 5px 0;
+    display: flex;
+    justify-content: center;
 }

@@ -22,27 +22,28 @@ function App() {
       endpoint_url = `${BASE_URL}/search/movie?query=${searchQuery}&page=${page}&language=en-US&include_adult=false`;
     } else {
       endpoint_url = `${BASE_URL}/movie/now_playing?language=en-US&page=${page}`;
+  }
+
+  const config = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${AUTH_KEY}`,
     }
+  };
 
-    const config = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${AUTH_KEY}`,
+  fetch(endpoint_url, config)
+    .then(res => res.json())
+    .then(json => {
+      // appends the new results to existing movie data results when page number is greater than 1
+      if (page === 1) {
+        setMovieData(json);
+      } else {
+        setMovieData(prev => ({...json, results: [...prev.results, ...json.results]}));
       }
-    };
+    })
+    .catch(err => console.log(err));
 
-    fetch(endpoint_url, config)
-      .then(res => res.json())
-      .then(json => {
-        // appends the new results to existing movie data results when page number is greater than 1
-        if (page === 1) {
-          setMovieData(json);
-        } else {
-          setMovieData(prev => ({...json, results: [...prev.results, ...json.results]}));
-        }
-      })
-      .catch(err => console.log(err));
   };
 
   const handleSearch = (searchQuery) => {
@@ -58,11 +59,9 @@ function App() {
   }
 
   useEffect(() => {
-    // Fetch movies whenever pageNumber or query changes
     fetchMovies(query, pageNumber);
   }, [pageNumber, query]);
 
-  // Initial fetch on component mount
   useEffect(() => {
     fetchMovies('', 1);
   }, []);
