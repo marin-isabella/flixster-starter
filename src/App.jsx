@@ -72,7 +72,6 @@ function App() {
       return;
     }
 
-    // For all other sort options, set sorting to true
     setIsSorted(true);
 
     // Reference to compare 2 strings alphabetically: https://stackoverflow.com/questions/10198257/comparing-2-strings-alphabetically-for-sorting-purposes
