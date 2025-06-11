@@ -9,7 +9,8 @@ const MovieCard = (props) => {
     return (
         <div className="movie-card">
             <div className="movie-image">
-                <img src={imageUrl} alt={title} />
+                <img src={imageUrl} alt={`Movie poster for ${title}`}/>
+
             </div>
             <div className="movie-info">
                 <h2 className="movie-title">{title}</h2>
