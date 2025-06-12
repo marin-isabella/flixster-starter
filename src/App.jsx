@@ -64,10 +64,30 @@ function App() {
     fetchMovies('', 1);
   }
 
+  // used to sort movies and has default case for 'now-playing' to return unsorted list
+  const getSortedMovies = (movies) => {
+    if (!movies) {
+      return [];
+    }
+
+    const moviesCopy = [...movies];
+
+    // Reference to compare 2 strings alphabetically: https://stackoverflow.com/questions/10198257/comparing-2-strings-alphabetically-for-sorting-purposes
+    // Reference to compare 2 dates: https://stackoverflow.com/questions/10123953/how-to-sort-an-object-array-by-date-property
+    if (sortOption === 'title') {
+      return moviesCopy.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortOption === 'release-date') {
+      return moviesCopy.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+    } else if (sortOption === 'vote-average') {
+      return moviesCopy.sort((a, b) => b.vote_average - a.vote_average);
+    } else {
+      return moviesCopy;
+    }
+  };
+
   const handleSort = (sortOption) => {
     setSortOption(sortOption);
 
-    // resets sorting state and fetches movies again when now playing selected on drop down (to unsort movies)
     if (sortOption === 'now-playing') {
       setIsSorted(false);
       fetchMovies('', 1);
@@ -76,20 +96,8 @@ function App() {
 
     setIsSorted(true);
 
-    // Reference to compare 2 strings alphabetically: https://stackoverflow.com/questions/10198257/comparing-2-strings-alphabetically-for-sorting-purposes
-    // Reference to compare 2 dates: https://stackoverflow.com/questions/10123953/how-to-sort-an-object-array-by-date-property
     setMovieData(prev => {
-      const sortedResults = [...prev.results].sort((a, b) => {
-        if (sortOption === 'title') {
-          return a.title.localeCompare(b.title);
-        } else if (sortOption === 'release-date') {
-          return new Date(b.release_date) - new Date(a.release_date);
-        } else if (sortOption === 'vote-average') {
-          return b.vote_average - a.vote_average;
-        }
-        return 0;
-      });
-
+      const sortedResults = getSortedMovies(prev.results);
       return {
         ...prev,
         results: sortedResults
@@ -160,17 +168,15 @@ function App() {
     fetchGenres();
   }, [pageNumber, query]);
 
-
   return (
     <>
       <Header onSearch={handleSearch} onClear={handleClear} onSort={handleSort}/>
       <main className="main">
-        <MovieList movies={movieData.results} loadMore={loadMore} isSorted={isSorted} onMovieSelect={handleMovieSelect}/>
+        <MovieList movies={getSortedMovies(movieData.results)} loadMore={loadMore} isSorted={isSorted} onMovieSelect={handleMovieSelect}/>
       </main>
       <Footer />
       {showModal && selectedMovie && (
-        <Modal movie={selectedMovie} genres={genreData} onClose={handleCloseModal} show={showModal} movieRuntime={movieRuntime}
-        />
+        <Modal movie={selectedMovie} genres={genreData} onClose={handleCloseModal} show={showModal} movieRuntime={movieRuntime}/>
       )}
     </>
   )
