@@ -1,7 +1,7 @@
 import React from 'react';
-import MovieCard from './MovieCard.jsx';
+import MovieCard from '../MovieCard/MovieCard.jsx';
 import './MovieList.css';
-import LoadButton from './LoadButton.jsx';
+import LoadButton from '../LoadMore/LoadButton.jsx';
 
 const MovieList = ({ movies, loadMore, onMovieSelect }) => {
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchForm from './SearchForm';
+import SearchForm from '../SearchForm/SearchForm';
 import './Header.css';
-import Sort from './Sort';
+import Sort from '../Sort/Sort';
 
 const Header = ({ onSearch, onClear, onSort }) => {
     return (

@@ -1,8 +1,8 @@
 import './App.css';
-import Header from './Header.jsx';
-import Footer from './Footer.jsx';
-import MovieList from './MovieList.jsx';
-import Modal from './Modal.jsx';
+import Header from './components/Header/Header.jsx';
+import Footer from './components/Footer/Footer.jsx';
+import MovieList from './components/MovieList/MovieList.jsx';
+import Modal from './components/Modal/Modal.jsx';
 import { useState, useEffect } from 'react';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
