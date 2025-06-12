@@ -18,6 +18,7 @@ function App() {
   const [genreData, setGenreData] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [movieRuntime, setMovieRuntime] = useState([]);
 
   const loadMore = () => {
     setPageNumber(prevPage => prevPage + 1);
@@ -53,6 +54,7 @@ function App() {
     .catch(err => console.log(err));
 
   };
+  console.log(movieData);
 
   const handleSearch = (searchQuery) => {
     setQuery(searchQuery);
@@ -124,9 +126,34 @@ function App() {
       .catch(err => console.log(err));
   };
 
+  // fetch runtime of movies - requires new API call for each movie card clicked on (passing in movie id)
+  const fetchRuntime = (movieId) => {
+    if (!movieId) {
+      return;
+    }
+
+    const endpoint_url = `${BASE_URL}/movie/${movieId}?language=en-US`;
+
+    const config = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${AUTH_KEY}`,
+      }
+    }
+
+    fetch(endpoint_url, config)
+    .then(res => res.json())
+    .then(json => {
+      setMovieRuntime(json.runtime);
+    })
+    .catch(err => console.log(err));
+  }
+
   const handleMovieSelect = (movie) => {
     setSelectedMovie(movie);
     setShowModal(true);
+    fetchRuntime(movie.id);
   };
 
   const handleCloseModal = () => {
@@ -142,12 +169,12 @@ function App() {
     <>
       <Header onSearch={handleSearch} onClear={handleClear} onSort={handleSort}/>
       <main className="main">
-        <MovieList movies={movieData.results} loadMore={loadMore} isSorted={isSorted} onMovieSelect={handleMovieSelect}
-        />
+        <MovieList movies={movieData.results} loadMore={loadMore} isSorted={isSorted} onMovieSelect={handleMovieSelect}/>
       </main>
       <Footer />
       {showModal && selectedMovie && (
-        <Modal movie={selectedMovie} genres={genreData} onClose={handleCloseModal} show={showModal}/>
+        <Modal movie={selectedMovie} genres={genreData} onClose={handleCloseModal} show={showModal} movieRuntime={movieRuntime}
+        />
       )}
     </>
   )

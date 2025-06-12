@@ -11,7 +11,7 @@ const MovieList = ({ movies, loadMore, isSorted, onMovieSelect }) => {
                 <div className="no-movies">No movies to show</div>
             ) : (
                 movies.map(movie => (
-                    <MovieCard key={movie.id} movie={movie} image={movie.poster_path} title={movie.original_title} rating={movie.vote_average} onClick={() => onMovieSelect(movie)}/>
+                    <MovieCard key={movie.id} movie={movie} image={movie.poster_path} title={movie.original_title} rating={movie.vote_average} runtime={movie.runtime} onClick={() => onMovieSelect(movie)}/>
                 ))
             )}
             <LoadButton inc={loadMore} disabled={isSorted} />
