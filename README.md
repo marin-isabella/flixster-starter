@@ -10,10 +10,13 @@ Currently, two official plugins are available:
 ### How to Run this Application
 1. Fork the repository.
 2. Clone the forked repository.
-3. Run the following command in the terminal:
+3. Run the following commands in the terminal:
 ```
     cd flixster-starter
     npm install
     npm run dev
 ```
-4. Open the link provided in the terminal in your browser
+4. Open the link provided in the terminal in your browser:
+```
+    http://localhost:5173/
+```
