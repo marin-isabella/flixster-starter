@@ -6,3 +6,14 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+### How to Run this Application
+1. Fork the repository.
+2. Clone the forked repository.
+3. Run the following command in the terminal:
+```
+    cd flixster-starter
+    npm install
+    npm run dev
+```
+4. Open the link provided in the terminal in your browser
