@@ -56,5 +56,10 @@
 .like-button {
     position: absolute;
     bottom: 10px;
-    left: 10px;
+    left: 10px;}
+
+.watched-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }

@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import './MovieCard.css';
 import Favorite from '../FavoriteButton/Favorite.jsx';
+import Watched from '../WatchedButton/Watched.jsx';
+
 
 const MovieCard = (props) => {
     const { image, title, rating, onClick } = props;
     const [isLiked, setIsLiked] = useState(false);
+    const [isWatched, setIsWatched] = useState(false);
 
     const toggleLike = () => {
         setIsLiked(!isLiked);
+    };
+
+    const toggleWatched = () => {
+        setIsWatched(!isWatched);
     };
     // Reference for base url: https://developer.themoviedb.org/docs/image-basics
     const imageUrl = `https://image.tmdb.org/t/p/w500${image}`;
@@ -25,6 +32,10 @@ const MovieCard = (props) => {
 
             <div className="like-button">
                 <Favorite liked={isLiked} onClick={toggleLike} />
+            </div>
+
+            <div className="watched-button">
+                <Watched watched={isWatched} onClick={toggleWatched} />
             </div>
         </div>
     )
