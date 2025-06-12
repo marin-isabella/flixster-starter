@@ -16,6 +16,7 @@ const MovieCard = (props) => {
     const toggleWatched = () => {
         setIsWatched(!isWatched);
     };
+
     // Reference for base url: https://developer.themoviedb.org/docs/image-basics
     const imageUrl = `https://image.tmdb.org/t/p/w500${image}`;
 
@@ -23,7 +24,6 @@ const MovieCard = (props) => {
         <div className="movie-card" onClick={onClick}>
             <div className="movie-image">
                 <img src={imageUrl} alt={`Movie poster for ${title}`}/>
-
             </div>
             <div className="movie-info">
                 <h2 className="movie-title">{title}</h2>

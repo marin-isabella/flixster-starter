@@ -4,7 +4,7 @@ Submitted by: **Isabella Marin**
 
 Estimated time spent: **#** hours spent in total
 
-Deployed Application (**required**): [Flixster Deployed Site](ADD_LINK_HERE)
+Deployed Application (**required**): [Flixster Deployed Site](https://flixster-starter-pxjb.onrender.com)
 
 ### How to Run this Application
 1. Fork the repository.
