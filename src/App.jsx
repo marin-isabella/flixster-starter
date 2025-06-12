@@ -8,7 +8,6 @@ import { useState, useEffect } from 'react';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const AUTH_KEY = import.meta.env.VITE_AUTH_KEY;
 
-
 function App() {
   const [movieData, setMovieData] = useState({ results: []});
   const [query, setQuery] = useState('');
@@ -19,10 +18,6 @@ function App() {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [movieRuntime, setMovieRuntime] = useState([]);
-
-  const loadMore = () => {
-    setPageNumber(prevPage => prevPage + 1);
-  }
 
   const fetchMovies = (searchQuery = '', page = 1) => {
     let endpoint_url = '';
@@ -102,9 +97,9 @@ function App() {
     });
   }
 
-  useEffect(() => {
-    fetchMovies(query, pageNumber);
-  }, [pageNumber, query]);
+  const loadMore = () => {
+    setPageNumber(prevPage => prevPage + 1);
+  }
 
   // fetch genres to compare against genre ids from movie data results
   const fetchGenres = () => {
@@ -161,9 +156,10 @@ function App() {
   };
 
   useEffect(() => {
-    fetchMovies('', 1);
+    fetchMovies(query, pageNumber);
     fetchGenres();
-  }, []);
+  }, [pageNumber, query]);
+
 
   return (
     <>

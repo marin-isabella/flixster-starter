@@ -3,7 +3,7 @@ import MovieCard from './MovieCard.jsx';
 import './MovieList.css';
 import LoadButton from './LoadButton.jsx';
 
-const MovieList = ({ movies, loadMore, isSorted, onMovieSelect }) => {
+const MovieList = ({ movies, loadMore, onMovieSelect }) => {
     return (
         <div className="movie-list">
             {/** Checks for when no movies to show if you keep pressing load more: */}
@@ -14,7 +14,7 @@ const MovieList = ({ movies, loadMore, isSorted, onMovieSelect }) => {
                     <MovieCard key={movie.id} movie={movie} image={movie.poster_path} title={movie.original_title} rating={movie.vote_average} runtime={movie.runtime} onClick={() => onMovieSelect(movie)}/>
                 ))
             )}
-            <LoadButton inc={loadMore} disabled={isSorted} />
+            <LoadButton inc={loadMore}/>
         </div>
     );
 }
