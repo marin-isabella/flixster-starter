@@ -9,6 +9,7 @@
     text-align: center;
     width: 200px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
 .movie-card:hover {
@@ -50,4 +51,10 @@
     font-size: 1rem;
     color: #666;
     margin: 5px 0;
+}
+
+.like-button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
 }
