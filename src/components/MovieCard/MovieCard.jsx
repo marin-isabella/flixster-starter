@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './MovieCard.css';
 import Favorite from '../FavoriteButton/Favorite.jsx';
 import Watched from '../WatchedButton/Watched.jsx';
+import fallbackImage from '../../assets/movie.png';
 
 
 const MovieCard = (props) => {
@@ -23,7 +24,14 @@ const MovieCard = (props) => {
     return (
         <div className="movie-card" onClick={onClick}>
             <div className="movie-image">
-                <img src={imageUrl} alt={`Movie poster for ${title}`}/>
+                <img
+                    src={imageUrl}
+                    alt={`Movie poster for ${title}`}
+                    onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = fallbackImage;
+                    }}
+                />
             </div>
             <div className="movie-info">
                 <h2 className="movie-title">{title}</h2>
