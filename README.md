@@ -135,7 +135,7 @@ If I had more time, I would have added additional features, such as the sidebar.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-During my project demo, I was able to successfully demo all of the core features and the 3 stretch goals I implemented for this project.
+During my project demo, I was able to successfully demo all of the core features and the 3 stretch goals I implemented for this project. Something my peers did that I would like to try next time is to add a loading symbol while movies are being fetched from the API.
 
 ### Open-source libraries used
 
