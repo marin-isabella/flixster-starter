@@ -83,18 +83,18 @@
   }
 }
 
-
 .trailer-flex-container {
   display: flex;
   flex-direction: column;
   margin-top: 30px;
   width: 100%;
-  border-top: 1px solid #e0e0e0;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .movie-trailer {
   width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .trailer-title {

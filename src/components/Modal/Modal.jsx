@@ -39,6 +39,7 @@ const Modal = ({ movie, genres, onClose, movieRuntime, movieTrailer }) => {
                                     height="315"
                                     src={`https://www.youtube.com/embed/${movieTrailer}`}
                                     title={`${movie.title} trailer`}
+                                    allowFullScreen
                                 ></iframe>
                             </div>
                         ) : (
