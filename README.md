@@ -2,7 +2,7 @@
 
 Submitted by: **Isabella Marin**
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: **22** hours spent in total
 
 Deployed Application (**required**): [Flixster Deployed Site](https://flixster-starter-pxjb.onrender.com)
 
