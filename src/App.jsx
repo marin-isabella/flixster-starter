@@ -28,7 +28,6 @@ function App() {
       endpoint_url = `${BASE_URL}/movie/now_playing?language=en-US&page=${page}`;
     }
 
-
   const config = {
     method: 'GET',
     headers: {

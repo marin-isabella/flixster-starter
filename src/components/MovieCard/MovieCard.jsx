@@ -4,7 +4,6 @@ import Favorite from '../FavoriteButton/Favorite.jsx';
 import Watched from '../WatchedButton/Watched.jsx';
 import fallbackImage from '../../assets/movie.png';
 
-
 const MovieCard = (props) => {
     const { image, title, rating, onClick } = props;
     const [isLiked, setIsLiked] = useState(false);
@@ -37,11 +36,9 @@ const MovieCard = (props) => {
                 <h2 className="movie-title">{title}</h2>
                 <h3 className="movie-rating">Rating: {rating}</h3>
             </div>
-
             <div className="like-button">
                 <Favorite liked={isLiked} onClick={toggleLike} />
             </div>
-
             <div className="watched-button">
                 <Watched watched={isWatched} onClick={toggleWatched} />
             </div>

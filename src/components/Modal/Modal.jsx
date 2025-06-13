@@ -29,7 +29,6 @@ const Modal = ({ movie, genres, onClose, movieRuntime, movieTrailer }) => {
                             {movieRuntime && <p className="movie-runtime"><strong>Runtime:</strong> {movieRuntime} minutes</p>}
                         </div>
                     </div>
-
                     <div className="trailer-flex-container">
                         {movieTrailer ? (
                             <div className="movie-trailer">
