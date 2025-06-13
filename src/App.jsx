@@ -18,6 +18,7 @@ function App() {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [movieRuntime, setMovieRuntime] = useState([]);
+  const [movieTrailer, setMovieTrailer] = useState(null)
 
   const fetchMovies = (searchQuery = '', page = 1) => {
     let endpoint_url = '';
@@ -153,10 +154,35 @@ function App() {
     .catch(err => console.log(err));
   }
 
+  const fetchMovieTrailers = (movieId) => {
+    if (!movieId) {
+      return;
+    }
+    const endpoint_url = `${BASE_URL}/movie/${movieId}/videos?language=en-US`;
+
+    const config = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${AUTH_KEY}`,
+      }
+    }
+
+    fetch(endpoint_url, config)
+    .then(res => res.json())
+    .then(json => {
+      // get first trailer video
+      const trailer = json.results.find(video => video.type === 'Trailer' || video.type === 'trailer');
+      setMovieTrailer(trailer ? trailer.key : null);
+    })
+    .catch(err => console.log(err));
+  }
+
   const handleMovieSelect = (movie) => {
     setSelectedMovie(movie);
     setShowModal(true);
     fetchRuntime(movie.id);
+    fetchMovieTrailers(movie.id);
   };
 
   const handleCloseModal = () => {
@@ -176,7 +202,7 @@ function App() {
       </main>
       <Footer />
       {showModal && selectedMovie && (
-        <Modal movie={selectedMovie} genres={genreData} onClose={handleCloseModal} show={showModal} movieRuntime={movieRuntime}/>
+        <Modal movie={selectedMovie} genres={genreData} onClose={handleCloseModal} show={showModal} movieRuntime={movieRuntime} movieTrailer={movieTrailer}/>
       )}
     </>
   )
