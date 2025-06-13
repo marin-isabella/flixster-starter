@@ -73,7 +73,7 @@ Deployed Application (**required**): [Flixster Deployed Site](https://flixster-s
     - [X] Search bar
     - [X] Movie grid
     - [X] Footer section
-    - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: To ease the grading process, please use the [color contrast checker](https://webaim.org/resources/contrastchecker/) to demonstrate to the grading team that text and background colors on your website have appropriate contrast. The Contrast Ratio should be above 4.5:1 and should have a green box surrounding it.
+    - [X] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: To ease the grading process, please use the [color contrast checker](https://webaim.org/resources/contrastchecker/) to demonstrate to the grading team that text and background colors on your website have appropriate contrast. The Contrast Ratio should be above 4.5:1 and should have a green box surrounding it.
   - [X] **Deployment**
   - [X] Website is deployed via Render.
   - [X] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: For ease of grading, please use the deployed version of your website when creating your walkthrough.
@@ -114,9 +114,14 @@ Deployed Application (**required**): [Flixster Deployed Site](https://flixster-s
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+<div>
+  <a href="https://www.loom.com/share/5981929ad3c944509c015900e95396f9">
+    <p>Isabella Marin - MetaU Flixster CodePath Project - Watch Video</p>
+  </a>
+  <a href="https://www.loom.com/share/5981929ad3c944509c015900e95396f9">
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/5981929ad3c944509c015900e95396f9-ff8197a8351926c2-full-play.gif">
+  </a>
+</div>
 
 ### Reflection
 
@@ -126,12 +131,11 @@ Yes; the labs prepared me very well to complete this project. The labs were very
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-
 If I had more time, I would have added additional features, such as the sidebar. Additionally, I would have liked to implement more error handling in my project, such as displaying an error message when the user enters an invalid search query. Although I do display a message saying "No movies to show" if the user enters a movie title that does not exist in the database, I would have liked to have a more specific error message. I would also have liked to have added a loading spinner while the movies were being fetched from the API. These features would have improved the user friendlyness of the application.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+During my project demo, I was able to successfully demo all of the core features and the 3 stretch goals I implemented for this project.
 
 ### Open-source libraries used
 
