@@ -8,7 +8,7 @@ const Header = ({ onSearch, onClear, onSort }) => {
         <>
             <header className="header">
                 <div className="header-info">
-                    <h1 className="header-title">🎥Flixster🎬</h1>
+                    <h1 className="header-title">🎥 Flixster 🎬</h1>
                     <div className="header-search">
                         <SearchForm onSearch={onSearch} onClear={onClear}/>
                     </div>
